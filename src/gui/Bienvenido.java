@@ -37,6 +37,9 @@ public class Bienvenido extends javax.swing.JFrame {
         botonSumar = new javax.swing.JButton();
         etiquetaResultado = new javax.swing.JLabel();
         campoResultado = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bienvenidos");
@@ -57,6 +60,27 @@ public class Bienvenido extends javax.swing.JFrame {
         campoResultado.setEditable(false);
         campoResultado.setFocusable(false);
 
+        jButton3.setText("Restar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Multiplicar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("dividir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,7 +88,14 @@ public class Bienvenido extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonSumar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonSumar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(etiquetaResultado)
@@ -78,7 +109,7 @@ public class Bienvenido extends javax.swing.JFrame {
                             .addComponent(campoNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                             .addComponent(campoNumero1)
                             .addComponent(campoResultado))))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +123,11 @@ public class Bienvenido extends javax.swing.JFrame {
                     .addComponent(etiquetaSegundoNumero)
                     .addComponent(campoNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonSumar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonSumar)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaResultado)
@@ -116,10 +151,70 @@ public class Bienvenido extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonSumarActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String texto1 = campoNumero1.getText();
+        try{
+            int num1 = Integer.parseInt(texto1);
+            int num2 = Integer.parseInt(campoNumero2.getText());
+            int resultado = num1 - num2;
+            String textoResultado = Integer.toString(resultado);
+            campoResultado.setText(textoResultado);
+        }
+        catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Sólo se admiten números.");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String texto1 = campoNumero1.getText();
+        try{
+            int num1 = Integer.parseInt(texto1);
+            int num2 = Integer.parseInt(campoNumero2.getText());
+            int resultado = num1 * num2;
+            String textoResultado = Integer.toString(resultado);
+            campoResultado.setText(textoResultado);
+        }
+        catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Sólo se admiten números.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String texto1 = campoNumero1.getText();
+        try{
+            double num1 = Integer.parseInt(texto1);
+            double num2 = Integer.parseInt(campoNumero2.getText());
+            double resultado = num1 / num2;
+            String textoResultado = Double.toString(resultado);
+            campoResultado.setText(textoResultado);
+        }
+        catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Sólo se admiten números.");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+                                                                                            
+         
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Bienvenido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Bienvenido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Bienvenido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Bienvenido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -150,6 +245,10 @@ public class Bienvenido extends javax.swing.JFrame {
             }
         });
     }
+    private javax.swing.JButton botonDividir;
+    private javax.swing.JButton botonMultiplicar;
+    private javax.swing.JButton botonRestar;
+    private javax.swing.JButton jButton1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSumar;
@@ -159,5 +258,8 @@ public class Bienvenido extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaPrimerNumero;
     private javax.swing.JLabel etiquetaResultado;
     private javax.swing.JLabel etiquetaSegundoNumero;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
 }
